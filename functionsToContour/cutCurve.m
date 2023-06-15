@@ -1,0 +1,23 @@
+function [Xcut,Ycut,Xcut2,Ycut2,Xin,Yin,Xfi,Yfi]=cutCurve(Xaux,Yaux,Num,Diametro)
+MagIn=sqrt(diff(Xaux).^2+diff(Yaux).^2);
+MagAc=[0;cumsum(MagIn)];
+NumB=Num;
+PosInA=sum(Num>=MagAc);
+PosInB=sum((NumB+Diametro)>=MagAc);
+MagCutA=Num-MagAc(PosInA);
+MagCutB=NumB+Diametro-MagAc(PosInB);
+ResX=Xaux(PosInB+1)-Xaux(PosInB);
+ResY=Yaux(PosInB+1)-Yaux(PosInB);
+MagB=sqrt(ResX^2+ResY^2);
+Xfi=Xaux(PosInB)+MagCutB*(ResX)/MagB;
+Yfi=Yaux(PosInB)+MagCutB*(ResY)/MagB;
+ResX=Xaux(PosInA+1)-Xaux(PosInA);
+ResY=Yaux(PosInA+1)-Yaux(PosInA);
+MagB=sqrt(ResX^2+ResY^2);
+Xin=Xaux(PosInA)+MagCutA*(ResX)/MagB;
+Yin=Yaux(PosInA)+MagCutA*(ResY)/MagB;
+Xcut=[Xfi;Xaux(PosInB+1:end)];
+Ycut=[Yfi;Yaux(PosInB+1:end)];
+Xcut2=[Xaux(1:PosInA);Xin];
+Ycut2=[Yaux(1:PosInA);Yin];
+end
