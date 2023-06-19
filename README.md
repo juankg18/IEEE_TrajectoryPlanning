@@ -7,7 +7,7 @@ Resources and extra documentation for the manuscript "Trajectory planning techni
 4. images
 5. main.m
 
-Requirements
+## Requirements
 
 * Matlab 2021b or later. All additional packages (only needed codes) were uploaded in this repository.
   * Signal Toolbox, General Toolbox and Graph Toolbox (G. Peyré, The Numerical Tours of Signal Processing - Advanced Computational Signal and Image Processing IEEE Computing in Science and Engineering, vol. 13(4), pp. 94-97, 2011).
